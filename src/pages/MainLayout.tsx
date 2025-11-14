@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import { SpecsPage } from './SpecsPage';
+import { OrdersPage } from './OrdersPage';
 import { QuickLinks } from '../components/QuickLinks';
 
-type MainTab = 'Specs' | 'Inventory' | 'Service Activation' | 'Example Requests';
+type MainTab = 'Specs' | 'Orders' | 'Inventory' | 'Service Activation' | 'Example Requests';
 
 export function MainLayout() {
   const [activeTab, setActiveTab] = useState<MainTab>('Specs');
 
-  const tabs: MainTab[] = ['Specs', 'Inventory', 'Service Activation', 'Example Requests'];
+  const tabs: MainTab[] = ['Specs', 'Orders', 'Inventory', 'Service Activation', 'Example Requests'];
 
   return (
     <div className="main-layout">
@@ -29,6 +30,7 @@ export function MainLayout() {
         {/* Left: Main Content */}
         <div className="main-content">
           {activeTab === 'Specs' && <SpecsPage />}
+          {activeTab === 'Orders' && <OrdersPage />}
           {activeTab === 'Inventory' && (
             <div className="placeholder-page">
               <h2>Inventory</h2>
