@@ -1,0 +1,545 @@
+[ModuleTable]
+EXTRA_TABLE_API_SPEC = "apiSpecification"
+EXTRA_TABLE_DETAILED_EVENTS = "ExtraDetailedEvents"
+EXTRA_TABLE_EVENTS = "events"
+EXTRA_TABLE_JOLT_SPEC = "joltSpec"
+EXTRA_TABLE_MANAGED_POLICY = "managedPolicy"
+EXTRA_TABLE_MONITOR = "monitor"
+EXTRA_TABLE_PROCESS_FLOW_SPECIFICATION = "processFlowSpecification"
+EXTRA_TABLE_REMOTE_TARGET_TO_ENTITY_MAPPING = "remoteTargetToEntityMapping"
+EXTRA_TABLE_SCHEMA = "schema"
+EXTRA_TABLE_SUB_TASK_RESOURCE = "subTaskResource"
+EXTRA_TABLE_TASK_RESOURCE = "taskResource"
+TMF628_PERFORMANCE_TABLE_INDICATOR_GROUP_SPECIFICATION = "performanceIndicatorGroupSpecification"
+TMF628_PERFORMANCE_TABLE_INDICATOR_SPECIFICATION = "performanceIndicatorSpecification"
+TMF628_PERFORMANCE_TABLE_MEASUREMENT = "performanceMeasurement"
+TMF628_PERFORMANCE_TABLE_ONDEMAND = "performanceOnDemandCollection"
+TMF628_PERFORMANCE_TABLE_TRACKING_RECORD = "performanceTrackingRecord"
+TMF633_SERVICE_CATALOG_TABLE_SERVICE_CANDIDATE = "serviceCandidate"
+TMF633_SERVICE_CATALOG_TABLE_SERVICE_CATALOG = "serviceCatalog"
+TMF633_SERVICE_CATALOG_TABLE_SERVICE_CATEGORY = "serviceCategory"
+TMF633_SERVICE_CATALOG_TABLE_SERVICE_EXPORT_JOB = "serviceExportJob"
+TMF633_SERVICE_CATALOG_TABLE_SERVICE_IMPORT_JOB = "serviceImportJob"
+TMF633_SERVICE_CATALOG_TABLE_SERVICE_SPECIFICATION = "serviceSpecification"
+TMF634_RESOURCE_CATALOG_TABLE_RESOURCE_CANDIDATE = "resourceCandidate"
+TMF634_RESOURCE_CATALOG_TABLE_RESOURCE_CATALOG = "resourceCatalog"
+TMF634_RESOURCE_CATALOG_TABLE_RESOURCE_CATEGORY = "resourceCategory"
+TMF634_RESOURCE_CATALOG_TABLE_RESOURCE_EXPORT_JOB = "resourceExportJob"
+TMF634_RESOURCE_CATALOG_TABLE_RESOURCE_IMPORT_JOB = "resourceImportJob"
+TMF634_RESOURCE_CATALOG_TABLE_RESOURCE_SPECIFICATION = "resourceSpecification"
+TMF635_USAGE_SPECIFICATION_TABLE_USAGE = "usageSpecification"
+TMF635_USAGE_TABLE_USAGE = "usage"
+TMF638_SERVICE_INVENTORY_TABLE_SERVICE = "service"
+TMF639_RESOURCE_INVENTORY_TABLE_RESOURCE = "resourceInventory"
+
+TMF640_SERVICE_ACTIVATION_TABLE_MONITOR = "serviceMonitor"
+TMF640_SERVICE_ACTIVATION_TABLE_SERVICE = "serviceActivation"
+
+TMF641_SERVICE_ORDER_TABLE_CANCEL_SERVICE_ORDER = "cancelServiceOrder"
+TMF641_SERVICE_ORDER_TABLE_SERVICE_ORDER = "serviceOrder"
+TMF652_RESOURCE_ORDER_TABLE_CANCEL_RESOURCE_ORDER = "cancelResourceOrder"
+TMF652_RESOURCE_ORDER_TABLE_RESOURCE_ORDER = "resourceOrder"
+TMF701_PROCESS_FlOW_TABLE_PROCESS_FLOW = "processFlowSpecification"
+TMF701_PROCESS_FlOW_TABLE_PROCESS_FLOW_SPECIFICATION = ""
+TMF701_PROCESS_FlOW_TABLE_TASK_FLOW = ""
+TMF701_PROCESS_FlOW_TABLE_TASK_FLOW_SPECIFICATION = ""
+TMF702_RESOURCE_ACTIVATION_TABLE_MONITOR = "resourceMonitor"
+TMF702_RESOURCE_ACTIVATION_TABLE_RESOURCE = "resourceActivation"
+TMF685_RESOURCE_POOL_MANAGEMENT_TABLE_CAPACITY_SPECIFICATION = "capacitySpecification"
+TMF685_RESOURCE_POOL_MANAGEMENT_TABLE_RESOURCE_POOL_SPECIFICATION = "resourcePoolSpecification"
+TMF685_RESOURCE_POOL_MANAGEMENT_TABLE_RESOURCE_POOL = "resourcePool"
+TMF685_RESOURCE_POOL_MANAGEMENT_TABLE_AVAILABILITY_CHECK = "resourcePoolAvailabilityCheck"
+TMF685_RESOURCE_POOL_MANAGEMENT_TABLE_EXTRACT = "resourcePoolExtract"
+TMF685_RESOURCE_POOL_MANAGEMENT_TABLE_PUSH = "resourcePoolPush"
+TMF716_RESOURCE_RESERVATION_TABLE_RESOURCE_RESERVATION = "resourceReservation"
+TMF716_RESOURCE_RESERVATION_TABLE_CANCEL_RESOURCE_RESERVATION = "cancelResourceReservation"
+
+BWC_PLANNED_TASKS = "bwPlannedTasks"
+BWC_SEND_TABLED = "sendTable"
+
+
+[RemapKafkaTopicName]
+TMF628_PERFORMANCE_KAFKA_MEASUREMENT_IN = "esb.prd.createMeasurement"
+TMF628_PERFORMANCE_KAFKA_MEASUREMENT_OUT ="esb.prd.measurementCreated"
+TMF628_PERFORMANCE_KAFKA_ONDEMAND_IN = "esb.prd.createOnDemand"
+TMF628_PERFORMANCE_KAFKA_ONDEMAND_OUT = "esb.prd.createOnDemandCreated"
+TMF628_PERFORMANCE_KAFKA_INDICATOR_GROUP_SPECIFICATION_IN = "esb.prd.createIndicatorGroupSpecification"
+TMF628_PERFORMANCE_KAFKA_INDICATOR_GROUP_SPECIFICATION_OUT = "esb.prd.createIndicatorGroupSpecificationCreated"
+TMF628_PERFORMANCE_KAFKA_INDICATOR_SPECIFICATION_IN = "esb.prd.createIndicatorSpecification"
+TMF628_PERFORMANCE_KAFKA_INDICATOR_SPECIFICATION_OUT = "esb.prd.indicatorSpecificationCreated"
+TMF628_PERFORMANCE_KAFKA_TRACKING_RECORD_IN = "esb.prd.createTrackingRecord"
+TMF628_PERFORMANCE_KAFKA_TRACKING_RECORD_OUT = "esb.prd.trackingRecordCreated"
+
+TMF633_SERVICE_CATALOG_KAFKA_SERVICE_CANDIDATE_IN = "esb.prd.createServiceCandidate"
+TMF633_SERVICE_CATALOG_KAFKA_SERVICE_CANDIDATE_OUT = "esb.prd.serviceCandidateCreated"
+TMF633_SERVICE_CATALOG_KAFKA_SERVICE_CATALOG_IN = "esb.prd.createServiceCatalog"
+TMF633_SERVICE_CATALOG_KAFKA_SERVICE_CATALOG_OUT = "esb.prd.serviceCatalogCreated"
+TMF633_SERVICE_CATALOG_KAFKA_SERVICE_CATEGORY_IN = "esb.prd.createServiceCategory"
+TMF633_SERVICE_CATALOG_KAFKA_SERVICE_CATEGORY_OUT = "esb.prd.serviceCategoryCreated"
+TMF633_SERVICE_CATALOG_KAFKA_SERVICE_EXPORT_JOB_IN = "esb.prd.createServiceExportJob"
+TMF633_SERVICE_CATALOG_KAFKA_SERVICE_EXPORT_JOB_OUT = "esb.prd.serviceExportJobCreated"
+TMF633_SERVICE_CATALOG_KAFKA_SERVICE_IMPORT_JOB_IN = "esb.prd.createServiceImportCatalogJob"
+TMF633_SERVICE_CATALOG_KAFKA_SERVICE_IMPORT_JOB_OUT = "esb.prd.serviceImportCatalogJobCreated"
+TMF633_SERVICE_CATALOG_KAFKA_SERVICE_SPECIFICATION_IN = "esb.prd.createServiceSpecification"
+TMF633_SERVICE_CATALOG_KAFKA_SERVICE_SPECIFICATION_OUT = "esb.prd.serviceSpecificationCreated"
+TMF633_SERVICE_INVENTORY_PARAGON_COMMON_NETWORK_PROFILE_OUT = "esb.prd.commonNetworkProfileCreated"
+TMF634_RESOURCE_CATALOG_KAFKA_RESOURCE_CANDIDATE_IN = "esb.prd.createResourceCandidate"
+TMF634_RESOURCE_CATALOG_KAFKA_RESOURCE_CANDIDATE_OUT = "esb.prd.resourceCandidateCreated"
+TMF634_RESOURCE_CATALOG_KAFKA_RESOURCE_CATALOG_IN = "esb.prd.createResourceCatalog"
+TMF634_RESOURCE_CATALOG_KAFKA_RESOURCE_CATALOG_OUT = "esb.prd.resourceCatalogCreated"
+TMF634_RESOURCE_CATALOG_KAFKA_RESOURCE_CATEGORY_IN = "esb.prd.createResourceCategory"
+TMF634_RESOURCE_CATALOG_KAFKA_RESOURCE_CATEGORY_OUT = "esb.prd.resourceCategoryCreated"
+TMF634_RESOURCE_CATALOG_KAFKA_RESOURCE_EXPORT_JOB_IN = "esb.prd.createResourceExportJob"
+TMF634_RESOURCE_CATALOG_KAFKA_RESOURCE_EXPORT_JOB_OUT = "esb.prd.resourceExportJobCreated"
+TMF634_RESOURCE_CATALOG_KAFKA_RESOURCE_IMPORT_JOB_IN = "esb.prd.createResourceImportJob"
+TMF634_RESOURCE_CATALOG_KAFKA_RESOURCE_IMPORT_JOB_OUT = "esb.prd.resourceImportJobCreated"
+TMF634_RESOURCE_CATALOG_KAFKA_RESOURCE_SPECIFICATION_IN = "esb.prd.createResourceSpecification"
+TMF634_RESOURCE_CATALOG_KAFKA_RESOURCE_SPECIFICATION_OUT = "esb.prd.resourceSpecificationCreated"
+
+
+
+TMF633_SERVICE_CATALOG_KAFKA_GET_SERVICE_CATALOG = "esb.prd.getServiceCatalog"
+TMF633_SERVICE_CATALOG_KAFKA_SERVICE_CATALOG_RESPONSE = "esb.prd.serviceCatalogResponse"
+TMF633_SERVICE_CATALOG_KAFKA_CREATE_SERVICE_CATALOG = "esb.prd.createServiceCatalog"
+TMF633_SERVICE_CATALOG_KAFKA_SERVICE_CATALOG_CREATED = "esb.prd.serviceCatalogCreated"
+TMF633_SERVICE_CATALOG_KAFKA_UPDATE_SERVICE_CATALOG = "esb.prd.updateServiceCatalog"
+TMF633_SERVICE_CATALOG_KAFKA_SERVICE_CATALOG_UPDATED = "esb.prd.serviceCatalogUpdated"
+TMF633_SERVICE_CATALOG_KAFKA_DELETE_SERVICE_CATALOG = "esb.prd.deleteServiceCatalog"
+TMF633_SERVICE_CATALOG_KAFKA_SERVICE_CATALOG_DELETED = "esb.prd.serviceCatalogDeleted"
+TMF633_SERVICE_CATALOG_KAFKA_GET_SERVICE_CATEGORY = "esb.prd.getServiceCategory"
+TMF633_SERVICE_CATALOG_KAFKA_SERVICE_CATEGORY_RESPONSE = "esb.prd.serviceCategoryResponse"
+TMF633_SERVICE_CATALOG_KAFKA_CREATE_SERVICE_CATEGORY = "esb.prd.createServiceCategory"
+TMF633_SERVICE_CATALOG_KAFKA_SERVICE_CATEGORY_CREATED = "esb.prd.serviceCategoryCreated"
+TMF633_SERVICE_CATALOG_KAFKA_UPDATE_SERVICE_CATEGORY = "esb.prd.updateServiceCategory"
+TMF633_SERVICE_CATALOG_KAFKA_SERVICE_CATEGORY_UPDATED = "esb.prd.serviceCategoryUpdated"
+TMF633_SERVICE_CATALOG_KAFKA_DELETE_SERVICE_CATEGORY = "esb.prd.deleteServiceCategory"
+TMF633_SERVICE_CATALOG_KAFKA_SERVICE_CATEGORY_DELETED = "esb.prd.serviceCategoryDeleted"
+TMF633_SERVICE_CATALOG_KAFKA_GET_SERVICE_CANDIDATE = "esb.prd.getServiceCandidate"
+TMF633_SERVICE_CATALOG_KAFKA_SERVICE_CANDIDATE_RESPONSE = "esb.prd.serviceCandidateResponse"
+TMF633_SERVICE_CATALOG_KAFKA_CREATE_SERVICE_CANDIDATE = "esb.prd.createServiceCandidate"
+TMF633_SERVICE_CATALOG_KAFKA_SERVICE_CANDIDATE_CREATED = "esb.prd.serviceCandidateCreated"
+TMF633_SERVICE_CATALOG_KAFKA_UPDATE_SERVICE_CANDIDATE = "esb.prd.updateServiceCandidate"
+TMF633_SERVICE_CATALOG_KAFKA_SERVICE_CANDIDATE_UPDATED = "esb.prd.serviceCandidateUpdated"
+TMF633_SERVICE_CATALOG_KAFKA_DELETE_SERVICE_CANDIDATE = "esb.prd.deleteServiceCandidate"
+TMF633_SERVICE_CATALOG_KAFKA_SERVICE_CANDIDATE_DELETED = "esb.prd.serviceCandidateDeleted"
+TMF633_SERVICE_CATALOG_KAFKA_GET_SERVICE_SPECIFICATION = "esb.prd.getServiceSpecification"
+TMF633_SERVICE_CATALOG_KAFKA_SERVICE_SPECIFICATION_RESPONSE = "esb.prd.serviceSpecificationResponse"
+TMF633_SERVICE_CATALOG_KAFKA_CREATE_SERVICE_SPECIFICATION = "esb.prd.createServiceSpecification"
+TMF633_SERVICE_CATALOG_KAFKA_SERVICE_SPECIFICATION_CREATED = "esb.prd.serviceSpecificationCreated"
+TMF633_SERVICE_CATALOG_KAFKA_UPDATE_SERVICE_SPECIFICATION = "esb.prd.updateServiceSpecification"
+TMF633_SERVICE_CATALOG_KAFKA_SERVICE_SPECIFICATION_UPDATED = "esb.prd.serviceSpecificationUpdated"
+TMF633_SERVICE_CATALOG_KAFKA_DELETE_SERVICE_SPECIFICATION = "esb.prd.deleteServiceSpecification"
+TMF633_SERVICE_CATALOG_KAFKA_SERVICE_SPECIFICATION_DELETED = "esb.prd.serviceSpecificationDeleted"
+
+TMF634_RESOURCE_CATALOG_KAFKA_GET_RESOURCE_CATALOG = "esb.prd.getResourceCatalog"
+TMF634_RESOURCE_CATALOG_KAFKA_RESOURCE_CATALOG_RESPONSE = "esb.prd.resourceCatalogResponse"
+TMF634_RESOURCE_CATALOG_KAFKA_CREATE_RESOURCE_CATALOG = "esb.prd.createResourceCatalog"
+TMF634_RESOURCE_CATALOG_KAFKA_RESOURCE_CATALOG_CREATED = "esb.prd.resourceCatalogCreated"
+TMF634_RESOURCE_CATALOG_KAFKA_UPDATE_RESOURCE_CATALOG = "esb.prd.updateResourceCatalog"
+TMF634_RESOURCE_CATALOG_KAFKA_RESOURCE_CATALOG_UPDATED = "esb.prd.resourceCatalogUpdated"
+TMF634_RESOURCE_CATALOG_KAFKA_DELETE_RESOURCE_CATALOG = "esb.prd.deleteResourceCatalog"
+TMF634_RESOURCE_CATALOG_KAFKA_RESOURCE_CATALOG_DELETED = "esb.prd.resourceCatalogDeleted"
+TMF634_RESOURCE_CATALOG_KAFKA_GET_RESOURCE_CATEGORY = "esb.prd.getResourceCategory"
+TMF634_RESOURCE_CATALOG_KAFKA_RESOURCE_CATEGORY_RESPONSE = "esb.prd.resourceCategoryResponse"
+TMF634_RESOURCE_CATALOG_KAFKA_CREATE_RESOURCE_CATEGORY = "esb.prd.createResourceCategory"
+TMF634_RESOURCE_CATALOG_KAFKA_RESOURCE_CATEGORY_CREATED = "esb.prd.resourceCategoryCreated"
+TMF634_RESOURCE_CATALOG_KAFKA_UPDATE_RESOURCE_CATEGORY = "esb.prd.updateResourceCategory"
+TMF634_RESOURCE_CATALOG_KAFKA_RESOURCE_CATEGORY_UPDATED = "esb.prd.resourceCategoryUpdated"
+TMF634_RESOURCE_CATALOG_KAFKA_DELETE_RESOURCE_CATEGORY = "esb.prd.deleteResourceCategory"
+TMF634_RESOURCE_CATALOG_KAFKA_RESOURCE_CATEGORY_DELETED = "esb.prd.resourceCategoryDeleted"
+TMF634_RESOURCE_CATALOG_KAFKA_GET_RESOURCE_CANDIDATE = "esb.prd.getResourceCandidate"
+TMF634_RESOURCE_CATALOG_KAFKA_RESOURCE_CANDIDATE_RESPONSE = "esb.prd.resourceCandidateResponse"
+TMF634_RESOURCE_CATALOG_KAFKA_CREATE_RESOURCE_CANDIDATE = "esb.prd.createResourceCandidate"
+TMF634_RESOURCE_CATALOG_KAFKA_RESOURCE_CANDIDATE_CREATED = "esb.prd.resourceCandidateCreated"
+TMF634_RESOURCE_CATALOG_KAFKA_UPDATE_RESOURCE_CANDIDATE = "esb.prd.updateResourceCandidate"
+TMF634_RESOURCE_CATALOG_KAFKA_RESOURCE_CANDIDATE_UPDATED = "esb.prd.resourceCandidateUpdated"
+TMF634_RESOURCE_CATALOG_KAFKA_DELETE_RESOURCE_CANDIDATE = "esb.prd.deleteResourceCandidate"
+TMF634_RESOURCE_CATALOG_KAFKA_RESOURCE_CANDIDATE_DELETED = "esb.prd.resourceCandidateDeleted"
+TMF634_RESOURCE_CATALOG_KAFKA_GET_RESOURCE_SPECIFICATION = "esb.prd.getResourceSpecification"
+TMF634_RESOURCE_CATALOG_KAFKA_RESOURCE_SPECIFICATION_RESPONSE = "esb.prd.resourceSpecificationResponse"
+TMF634_RESOURCE_CATALOG_KAFKA_CREATE_RESOURCE_SPECIFICATION = "esb.prd.createResourceSpecification"
+TMF634_RESOURCE_CATALOG_KAFKA_RESOURCE_SPECIFICATION_CREATED = "esb.prd.resourceSpecificationCreated"
+TMF634_RESOURCE_CATALOG_KAFKA_UPDATE_RESOURCE_SPECIFICATION = "esb.prd.updateResourceSpecification"
+TMF634_RESOURCE_CATALOG_KAFKA_RESOURCE_SPECIFICATION_UPDATED = "esb.prd.resourceSpecificationUpdated"
+TMF634_RESOURCE_CATALOG_KAFKA_DELETE_RESOURCE_SPECIFICATION = "esb.prd.deleteResourceSpecification"
+TMF634_RESOURCE_CATALOG_KAFKA_RESOURCE_SPECIFICATION_DELETED = "esb.prd.resourceSpecificationDeleted"
+
+TMF635_USAGE_KAFKA_USAGE_IN = "esb.prd.queryResourceUsage"
+TMF635_USAGE_KAFKA_USAGE_OUT = "esb.prd.resourceUsageQueried"
+TMF635_USAGE_SPECIFICATION_KAFKA_USAGE_IN = "esb.prd.createUsageSpecification"
+TMF635_USAGE_SPECIFICATION_KAFKA_USAGE_OUT = "esb.prd.usageSpecificationCreated"
+
+TMF638_SERVICE_INVENTORY_KAFKA_SERVICE_IN = "esb.prd.createServiceInventory"
+TMF638_SERVICE_INVENTORY_KAFKA_SERVICE_OUT = "esb.prd.serviceInventoryCreated"
+
+TMF638_SERVICE_INVENTORY_KAFKA_GET_SERVICE = "esb.prd.getServiceInventory"
+TMF638_SERVICE_INVENTORY_KAFKA_SERVICE_RESPONSE = "esb.prd.serviceInventoryResponse"
+TMF638_SERVICE_INVENTORY_KAFKA_CREATE_SERVICE = "esb.prd.createServiceInventory"
+TMF638_SERVICE_INVENTORY_KAFKA_SERVICE_CREATED = "esb.prd.serviceInventoryCreated"
+TMF638_SERVICE_INVENTORY_KAFKA_UPDATE_SERVICE = "esb.prd.updateServiceInventory"
+TMF638_SERVICE_INVENTORY_KAFKA_SERVICE_UPDATED = "esb.prd.serviceInventoryUpdated"
+TMF638_SERVICE_INVENTORY_KAFKA_DELETE_SERVICE = "esb.prd.deleteServiceInventory"
+TMF638_SERVICE_INVENTORY_KAFKA_SERVICE_DELETED = "esb.prd.serviceInventoryDeleted"
+
+TMF639_RESOURCE_INVENTORY_KAFKA_RESOURCE_IN = "esb.prd.createResource"
+TMF639_RESOURCE_INVENTORY_KAFKA_RESOURCE_OUT = "esb.prd.resourceCreated"
+TMF639_RESOURCE_INVENTORY_KAFKA_GET_RESOURCE_IN = "esb.prd.getResource"
+TMF639_RESOURCE_INVENTORY_KAFKA_GET_RESOURCE_OUT = "esb.prd.resourceResponse"
+TMF639_RESOURCE_INVENTORY_KAFKA_POST_RESOURCE_IN = "esb.prd.createResource"
+TMF639_RESOURCE_INVENTORY_KAFKA_POST_RESOURCE_OUT = "esb.prd.resourceCreated"
+TMF639_RESOURCE_INVENTORY_KAFKA_PATCH_RESOURCE_IN = "esb.prd.updateResource"
+TMF639_RESOURCE_INVENTORY_KAFKA_PATCH_RESOURCE_OUT = "esb.prd.resourceUpdated"
+TMF639_RESOURCE_INVENTORY_KAFKA_DELETE_RESOURCE_IN = "esb.prd.deleteResource"
+TMF639_RESOURCE_INVENTORY_KAFKA_DELETE_RESOURCE_OUT = "esb.prd.resourceDeleted"
+
+TMF640_SERVICE_ACTIVATION_KAFKA_MONITOR_IN = "esb.prd.createServiceMonitor"
+TMF640_SERVICE_ACTIVATION_KAFKA_MONITOR_OUT = "esb.prd.serviceMonitorCreated"
+
+TMF640_SERVICE_ACTIVATION_KAFKA_SERVICE_IN = "nsb.createServiceActivation"
+TMF640_SERVICE_ACTIVATION_KAFKA_SERVICE_OUT = "nsb.serviceActivationCreated"
+
+TMF640_SERVICE_ACTIVATION_KAFKA_EVENTS = "nsb.serviceActivationEvents"
+TMF640_SERVICE_ACTIVATION_KAFKA_FAILED_EVENTS = "nsb.serviceActivationFailedEvents"
+
+TMF641_SERVICE_ORDER_KAFKA_CANCEL_SERVICE_ORDER_IN = "esb.prd.createCancelServiceOrder"
+TMF641_SERVICE_ORDER_KAFKA_CANCEL_SERVICE_ORDER_OUT = "esb.prd.cancelServiceOrderCreated"
+TMF641_SERVICE_ORDER_KAFKA_SERVICE_ORDER_IN = "esb.prd.createServiceOrder"
+TMF641_SERVICE_ORDER_KAFKA_SERVICE_ORDER_OUT = "esb.prd.serviceOrderCreated"
+TMF641_SERVICE_ORDER_KAFKA_SERVICE_ORDER_IMPORT_JOB_IN = "esb.prd.createServiceImportJob"
+TMF641_SERVICE_ORDER_KAFKA_SERVICE_ORDER_IMPORT_JOB_OUT = "esb.prd.serviceImportJobCreated"
+
+TMF641_SERVICE_ORDER_KAFKA_GET_SERVICE_ORDER = "esb.prd.getServiceOrder"
+TMF641_SERVICE_ORDER_KAFKA_SERVICE_ORDER_RESPONSE = "esb.prd.serviceOrderResponse"
+TMF641_SERVICE_ORDER_KAFKA_CREATE_SERVICE_ORDER = "esb.prd.createServiceOrder"
+TMF641_SERVICE_ORDER_KAFKA_SERVICE_ORDER_CREATED = "esb.prd.serviceOrderCreated"
+TMF641_SERVICE_ORDER_KAFKA_UPDATE_SERVICE_ORDER = "esb.prd.updateServiceOrder"
+TMF641_SERVICE_ORDER_KAFKA_SERVICE_ORDER_UPDATED = "esb.prd.serviceOrderUpdated"
+TMF641_SERVICE_ORDER_KAFKA_DELETE_SERVICE_ORDER = "esb.prd.deleteServiceOrder"
+TMF641_SERVICE_ORDER_KAFKA_SERVICE_ORDER_DELETED = "esb.prd.serviceOrderDeleted"
+TMF641_SERVICE_ORDER_KAFKA_GET_CANCEL_SERVICE_ORDER = "esb.prd.getCancelServiceOrder"
+TMF641_SERVICE_ORDER_KAFKA_CANCEL_SERVICE_ORDER_RESPONSE = "esb.prd.cancelServiceOrderResponse"
+TMF641_SERVICE_ORDER_KAFKA_CANCEL_CREATE_SERVICE_ORDER = "esb.prd.createCancelServiceOrder"
+TMF641_SERVICE_ORDER_KAFKA_CANCEL_SERVICE_ORDER_CREATED = "esb.prd.cancelServiceOrderCreated"
+TMF641_SERVICE_ORDER_KAFKA_CANCEL_SERVICE_ORDER_EVENTS = "esb.prd.cancelServiceOrderEvents"
+
+TMF645_SERVICE_QUAFICATION_KAFKA_CHECK_SERVICE_QUALIFICATION_IN = "esb.prd.createCheckServiceQualification"
+TMF645_SERVICE_QUAFICATION_KAFKA_CHECK_SERVICE_QUALIFICATION_OUT = "esb.prd.checkServiceQualificationCreated"
+TMF645_SERVICE_QUAFICATION_KAFKA_QUERY_SERVICE_QUALIFICATION_IN = "esb.prd.createQueryServiceQualification"
+TMF645_SERVICE_QUAFICATION_KAFKA_QUERY_SERVICE_QUALIFICATION_OUT = "esb.prd.queryServiceQualificationCreated"
+
+TMF652_RESOURCE_ORDER_KAFKA_RESOURCE_ORDER_IN = "esb.prd.createResourceOrder"
+TMF652_RESOURCE_ORDER_KAFKA_RESOURCE_ORDER_OUT = "esb.prd.resourceOrderCreated"
+TMF652_RESOURCE_ORDER_KAFKA_CANCEL_RESOURCE_ORDER_IN = "esb.prd.createCancelResourceOrder"
+TMF652_RESOURCE_ORDER_KAFKA_CANCEL_RESOURCE_ORDER_OUT = "esb.prd.cancelResourceOrderCreated"
+TMF652_RESOURCE_ORDER_KAFKA_RESOURCE_ORDER_EVENTS = "esb.prd.resourceOrderEvents"
+TMF652_RESOURCE_ORDER_KAFKA_CANCEL_RESOURCE_ORDER_EVENTS = "esb.prd.cancelResourceOrderEvents"
+
+TMF685_RESOURCE_POOL_MANAGEMENT_KAFKA_GET_CAPACITY_SPECIFICATION = "esb.prd.getCapacitySpecification"
+TMF685_RESOURCE_POOL_MANAGEMENT_KAFKA_CAPACITY_SPECIFICATION_RESPONSE = "esb.prd.capacitySpecificationResponse"
+TMF685_RESOURCE_POOL_MANAGEMENT_KAFKA_CREATE_CAPACITY_SPECIFICATION = "esb.prd.createCapacitySpecification"
+TMF685_RESOURCE_POOL_MANAGEMENT_KAFKA_CAPACITY_SPECIFICATION_CREATED = "esb.prd.capacitySpecificationCreated"
+TMF685_RESOURCE_POOL_MANAGEMENT_KAFKA_UPDATE_CAPACITY_SPECIFICATION = "esb.prd.updateCapacitySpecification"
+TMF685_RESOURCE_POOL_MANAGEMENT_KAFKA_CAPACITY_SPECIFICATION_UPDATED = "esb.prd.capacitySpecificationUpdated"
+TMF685_RESOURCE_POOL_MANAGEMENT_KAFKA_DELETE_CAPACITY_SPECIFICATION = "esb.prd.deleteCapacitySpecification"
+TMF685_RESOURCE_POOL_MANAGEMENT_KAFKA_CAPACITY_SPECIFICATION_DELETED = "esb.prd.capacitySpecificationDeleted"
+TMF685_RESOURCE_POOL_MANAGEMENT_KAFKA_CAPACITY_SPECIFICATION_EVENTS = "esb.prd.capacitySpecificationEvents"
+TMF685_RESOURCE_POOL_MANAGEMENT_KAFKA_GET_RESOURCE_POOL_SPECIFICATION = "esb.prd.getResourcePoolSpec"
+TMF685_RESOURCE_POOL_MANAGEMENT_KAFKA_RESOURCE_POOL_SPECIFICATION_RESPONSE = "esb.prd.resourcePoolSpecResponse"
+TMF685_RESOURCE_POOL_MANAGEMENT_KAFKA_CREATE_RESOURCE_POOL_SPECIFICATION = "esb.prd.createResourcePoolSpec"
+TMF685_RESOURCE_POOL_MANAGEMENT_KAFKA_RESOURCE_POOL_SPECIFICATION_CREATED = "esb.prd.resourcePoolSpecCreated"
+TMF685_RESOURCE_POOL_MANAGEMENT_KAFKA_UPDATE_RESOURCE_POOL_SPECIFICATION = "esb.prd.updateResourcePoolSpec"
+TMF685_RESOURCE_POOL_MANAGEMENT_KAFKA_RESOURCE_POOL_SPECIFICATION_UPDATED = "esb.prd.resourcePoolSpecUpdated"
+TMF685_RESOURCE_POOL_MANAGEMENT_KAFKA_DELETE_RESOURCE_POOL_SPECIFICATION = "esb.prd.deleteResourcePoolSpec"
+TMF685_RESOURCE_POOL_MANAGEMENT_KAFKA_RESOURCE_POOL_SPECIFICATION_DELETED = "esb.prd.resourcePoolSpecDeleted"
+TMF685_RESOURCE_POOL_MANAGEMENT_KAFKA_RESOURCE_POOL_SPECIFICATION_EVENTS = "esb.prd.resourcePoolSpecEvents"
+TMF685_RESOURCE_POOL_MANAGEMENT_KAFKA_GET_RESOURCE_POOL = "esb.prd.getResourcePool"
+TMF685_RESOURCE_POOL_MANAGEMENT_KAFKA_RESOURCE_POOL_RESPONSE = "esb.prd.resourcePoolResponse"
+TMF685_RESOURCE_POOL_MANAGEMENT_KAFKA_CREATE_RESOURCE_POOL = "esb.prd.createResourcePool"
+TMF685_RESOURCE_POOL_MANAGEMENT_KAFKA_RESOURCE_POOL_CREATED = "esb.prd.resourcePoolCreated"
+TMF685_RESOURCE_POOL_MANAGEMENT_KAFKA_UPDATE_RESOURCE_POOL = "esb.prd.updateResourcePool"
+TMF685_RESOURCE_POOL_MANAGEMENT_KAFKA_RESOURCE_POOL_UPDATED = "esb.prd.resourcePoolUpdated"
+TMF685_RESOURCE_POOL_MANAGEMENT_KAFKA_DELETE_RESOURCE_POOL = "esb.prd.deleteResourcePool"
+TMF685_RESOURCE_POOL_MANAGEMENT_KAFKA_RESOURCE_POOL_DELETED = "esb.prd.resourcePoolDeleted"
+TMF685_RESOURCE_POOL_MANAGEMENT_KAFKA_RESOURCE_POOL_EVENTS = "esb.prd.resourcePoolEvents"
+TMF685_RESOURCE_POOL_MANAGEMENT_KAFKA_GET_AVAILABILITY_CHECK = "esb.prd.getResourcePoolAvailabilityCheck"
+TMF685_RESOURCE_POOL_MANAGEMENT_KAFKA_AVAILABILITY_CHECK_RESPONSE = "esb.prd.resourcePoolAvailabilityCheckResponse"
+TMF685_RESOURCE_POOL_MANAGEMENT_KAFKA_CREATE_AVAILABILITY_CHECK = "esb.prd.createAvailabilityCheck"
+TMF685_RESOURCE_POOL_MANAGEMENT_KAFKA_AVAILABILITY_CHECK_CREATED = "esb.prd.availabilityCheckCreated"
+TMF685_RESOURCE_POOL_MANAGEMENT_KAFKA_AVAILABILITY_CHECK_EVENTS = "esb.prd.availabilityCheckEvents"
+TMF685_RESOURCE_POOL_MANAGEMENT_KAFKA_WORKER_AVAILABILITY_CHECK = "esb.prd.workerAvailabilityCheck"
+TMF685_RESOURCE_POOL_MANAGEMENT_KAFKA_GET_EXTRACT = "esb.prd.getResourcePoolExtract"
+TMF685_RESOURCE_POOL_MANAGEMENT_KAFKA_EXTRACT_RESPONSE = "esb.prd.resourcePoolExtractResponse"
+TMF685_RESOURCE_POOL_MANAGEMENT_KAFKA_CREATE_EXTRACT = "esb.prd.createResourcePoolExtract"
+TMF685_RESOURCE_POOL_MANAGEMENT_KAFKA_EXTRACT_CREATED = "esb.prd.resourcePoolExtractCreated"
+TMF685_RESOURCE_POOL_MANAGEMENT_KAFKA_EXTRACT_EVENTS = "esb.prd.resourcePoolExtractEvents"
+TMF685_RESOURCE_POOL_MANAGEMENT_KAFKA_WORKER_EXTRACT = "esb.prd.workerResourcePoolExtract"
+TMF685_RESOURCE_POOL_MANAGEMENT_KAFKA_GET_PUSH = "esb.prd.getResourcePoolPush"
+TMF685_RESOURCE_POOL_MANAGEMENT_KAFKA_PUSH_RESPONSE = "esb.prd.resourcePoolPushResponse"
+TMF685_RESOURCE_POOL_MANAGEMENT_KAFKA_CREATE_PUSH = "esb.prd.createResourcePoolPush"
+TMF685_RESOURCE_POOL_MANAGEMENT_KAFKA_PUSH_CREATED = "esb.prd.resourcePoolPushCreated"
+TMF685_RESOURCE_POOL_MANAGEMENT_KAFKA_PUSH_EVENTS = "esb.prd.resourcePoolPushEvents"
+TMF685_RESOURCE_POOL_MANAGEMENT_KAFKA_WORKER_PUSH = "esb.prd.workerResourcePoolPush"
+
+TMF702_RESOURCE_ACTIVATION_KAFKA_RESOURCE_IN = "esb.prd.createResourceActivation"
+TMF702_RESOURCE_ACTIVATION_KAFKA_RESOURCE_OUT = "esb.prd.resourceActivationCreated"
+TMF702_RESOURCE_ACTIVATION_KAFKA_MONITOR_IN = "esb.prd.createMonitor"
+TMF702_RESOURCE_ACTIVATION_KAFKA_MONITOR_OUT = "esb.prd.monitorCreated"
+
+TMF716_RESOURCE_RESERVATION_KAFKA_GET_RESOURCE_RESERVATION = "esb.prd.getResourceReservation"
+TMF716_RESOURCE_RESERVATION_KAFKA_RESOURCE_RESERVATION_RESPONSE = "esb.prd.resourceReservationResponse"
+TMF716_RESOURCE_RESERVATION_KAFKA_CREATE_RESOURCE_RESERVATION = "esb.prd.createResourceReservation"
+TMF716_RESOURCE_RESERVATION_KAFKA_RESOURCE_RESERVATION_CREATED = "esb.prd.resourceReservationCreated"
+TMF716_RESOURCE_RESERVATION_KAFKA_UPDATE_RESOURCE_RESERVATION = "esb.prd.updateResourceReservation"
+TMF716_RESOURCE_RESERVATION_KAFKA_RESOURCE_RESERVATION_UPDATED = "esb.prd.resourceReservationUpdated"
+TMF716_RESOURCE_RESERVATION_KAFKA_DELETE_RESOURCE_RESERVATION = "esb.prd.deleteResourceReservation"
+TMF716_RESOURCE_RESERVATION_KAFKA_RESOURCE_RESERVATION_DELETED = "esb.prd.resourceReservationDeleted"
+TMF716_RESOURCE_RESERVATION_KAFKA_RESOURCE_RESERVATION_EVENT = "esb.prd.resourceReservationEvents"
+TMF716_RESOURCE_RESERVATION_KAFKA_RESOURCE_RESERVATION_WORKER = "esb.prd.workerResourceReservation"
+TMF716_RESOURCE_RESERVATION_KAFKA_GET_CANCEL_RESOURCE_RESERVATION = "esb.prd.getCancelResourceReservation"
+TMF716_RESOURCE_RESERVATION_KAFKA_CANCEL_RESOURCE_RESERVATION_RESPONSE = "esb.prd.cancelResourceReservationResponse"
+TMF716_RESOURCE_RESERVATION_KAFKA_CREATE_CANCEL_RESOURCE_RESERVATION = "esb.prd.createCancelResourceReservation"
+TMF716_RESOURCE_RESERVATION_KAFKA_CANCEL_RESOURCE_RESERVATION_CREATED = "esb.prd.cancelResourceReservationCreated"
+TMF716_RESOURCE_RESERVATION_KAFKA_UPDATE_CANCEL_RESOURCE_RESERVATION = "esb.prd.updateCancelResourceReservation"
+TMF716_RESOURCE_RESERVATION_KAFKA_CANCEL_RESOURCE_RESERVATION_UPDATED = "esb.prd.cancelResourceReservationUpdated"
+TMF716_RESOURCE_RESERVATION_KAFKA_DELETE_CANCEL_RESOURCE_RESERVATION = "esb.prd.deleteCancelResourceReservation"
+TMF716_RESOURCE_RESERVATION_KAFKA_CANCEL_RESOURCE_RESERVATION_DELETED = "esb.prd.cancelResourceReservationDeleted"
+TMF716_RESOURCE_RESERVATION_KAFKA_CANCEL_RESOURCE_RESERVATION_EVENT = "esb.prd.cancelResourceReservationEvents"
+TMF716_RESOURCE_RESERVATION_KAFKA_CANCEL_RESOURCE_RESERVATION_WORKER = "esb.prd.workerCancelResourceReservation"
+TMF716_RESOURCE_RESERVATION_KAFKA_RESOURCE_CANCEL_RESERVATION_EVENT = "esb.prd.cancelResourceReservationEvents"
+
+BANDWIDTH_CALENDAR_IN = "esb.prd.bandwidthCalendarIn"
+BANDWIDTH_CALENDAR_OUT = "esb.prd.bandwidthCalendarOut"
+EXTERNAL_NLP_QR_CODE_GEN_SERVICE_IN = "nlp.pty.generateLoyaltyVoucherCode"
+EXTERNAL_NLP_QR_CODE_GEN_SERVICE_OUT = "nlp.pty.loyaltyVoucherCodeGenerated"
+
+[[EventTopicMapping]]
+EventNames = ["ResourceCategoryCreateEvent","ResourceCategoryChangeEvent","ResourceCategoryDeleteEvent"]
+TopicName = "esb.prd.resourceCategoryEvents"
+ModuleName = "resourceCategory"
+MongoTable = "events"
+
+[[EventTopicMapping]]
+EventNames = ["ResourceCandidateCreateEvent","ResourceCandidateChangeEvent","ResourceCandidateDeleteEvent"]
+TopicName = "esb.prd.resourceCandidateEvents"
+ModuleName = "resourceCandidate"
+MongoTable = "events"
+
+[[EventTopicMapping]]
+EventNames = ["ResourceSpecificationCreateEvent","ResourceSpecificationChangeEvent","ResourceSpecificationDeleteEvent"]
+TopicName = "esb.prd.resourceSpecificationEvents"
+ModuleName = "resourceSpecification"
+MongoTable = "events"
+
+[[EventTopicMapping]]
+EventNames = ["ServiceCatalogCreateEvent","ServiceCatalogChangeEvent","ServiceCatalogDeleteEvent"]
+TopicName = "esb.prd.serviceCatalogEvents"
+ModuleName = "serviceCatalog"
+MongoTable = "events"
+
+[[EventTopicMapping]]
+EventNames = ["ServiceCandidateCreateEvent","ServiceCandidateChangeEvent","ServiceCandidateDeleteEvent"]
+TopicName = "esb.prd.serviceCandidateEvents"
+ModuleName = "serviceCandidate"
+MongoTable = "events"
+
+[[EventTopicMapping]]
+EventNames = ["ServiceCategoryCreateEvent","ServiceCategoryChangeEvent","ServiceCategoryDeleteEvent"]
+TopicName = "esb.prd.serviceCategoryEvents"
+ModuleName = "serviceCategory"
+MongoTable = "events"
+
+[[EventTopicMapping]]
+EventNames = ["ServiceSpecificationCreateEvent","ServiceSpecificationChangeEvent","ServiceSpecificationDeleteEvent"]
+TopicName = "esb.prd.serviceSpecificationEvents"
+ModuleName = "serviceSpecification"
+MongoTable = "events"
+
+[[EventTopicMapping]]
+EventNames = ["ServiceInventoryCreateEvent","ServiceInventoryChangeEvent","ServiceInventoryStateChangeEvent","ServiceInventoryDeleteEvent"]
+TopicName = "esb.prd.serviceInventoryEvents"
+ModuleName = "serviceInventory"
+MongoTable = "events"
+
+[[EventTopicMapping]]
+EventNames = ["ServiceCreateEvent","ServiceChangeEvent","ServiceStateChangeEvent","ServiceDeleteEvent","ServiceAttributeValueChangeEvent","ServiceOperatingStatusChangeEvent"]
+TopicName = "esb.prd.serviceEvents"
+ModuleName = "service"
+MongoTable = "events"
+
+[[EventTopicMapping]]
+EventNames = ["ServiceCreateEvent","ServiceChangeEvent","ServiceStateChangeEvent","ServiceDeleteEvent","ServiceAttributeValueChangeEvent","ServiceOperatingStatusChangeEvent"]
+TopicName = "esb.prd.serviceActivationEvents"
+ModuleName = "service"
+MongoTable = "events"
+
+[[EventTopicMapping]]
+EventNames = ["MonitorCreateEvent","MonitorStateChangeEvent","MonitorDeleteEvent","MonitorAttributeValueChangeEvent"]
+TopicName = "esb.prd.serviceMonitorEvents"
+ModuleName = "serviceMonitor"
+MongoTable = "events"
+
+[[EventTopicMapping]]
+EventNames = ["ResourceInventoryCreateEvent","ResourceInventoryChangeEvent","ResourceInventoryDeleteEvent"]
+TopicName = "esb.prd.resourceInventoryEvents"
+ModuleName = "resourceInventory"
+MongoTable = "events"
+
+[[EventTopicMapping]]
+EventNames = ["ResourceCreateEvent","ResourceChangeEvent","ResourceDeleteEvent","ResourceAttributeValueChangeEvent"]
+TopicName = "esb.prd.resourceEvents"
+ModuleName = "resource"
+MongoTable = "events"
+
+[[EventTopicMapping]]
+EventNames = ["ResourceActivationCreateEvent","ResourceActivationChangeEvent","ResourceActivationDeleteEvent"]
+TopicName = "esb.prd.resourceActivationEvents"
+ModuleName = "resourceActivation"
+MongoTable = "events"
+
+[[EventTopicMapping]]
+EventNames = ["ResourceCreateEvent","ResourceChangeEvent","ResourceDeleteEvent","ResourceAttributeValueChangeEvent"]
+TopicName = "esb.prd.resourceActivationEvents"
+ModuleName = "resourceActivation"
+MongoTable = "events"
+
+[[EventTopicMapping]]
+EventNames = ["MonitorCreateEvent","MonitorStateChangeEvent","MonitorDeleteEvent","MonitorAttributeValueChangeEvent"]
+TopicName = "esb.prd.resourceMonitorEvents"
+ModuleName = "resourceMonitor"
+MongoTable = "events"
+
+
+[[EventTopicMapping]]
+EventNames = ["ServiceOrderEvents","ServiceOrderCreateEvent","ServiceOrderStateChangeEvent","ServiceOrderDeleteEvent","ServiceOrderInformationRequiredEvent","ServiceOrderJeopardyEvent","ServiceOrderMilestoneEvent"]
+TopicName = "esb.prd.serviceOrderEvents"
+ModuleName = "serviceOrder"
+MongoTable = "events"
+
+[[EventTopicMapping]]
+EventNames = ["ServiceOrderItemStateChangeEvent"]
+TopicName = "esb.prd.serviceOrderEvents"
+ModuleName = "serviceOrderItem"
+MongoTable = "events"
+
+[[EventTopicMapping]]
+EventNames = ["CancelServiceOrderCreateEvent","CancelServiceOrderStateChangeEvent","CancelServiceOrderInformationRequiredEvent"]
+TopicName = "esb.prd.cancelServiceOrderEvents"
+ModuleName = "cancelServiceOrder"
+MongoTable = "events"
+
+[[EventTopicMapping]]
+EventNames = ["ResourceOrderCreateEvent","ResourceOrderChangeEvent","ResourceOrderStateChangeEvent","ResourceOrderDeleteEvent","ResourceOrderAttributeValueChangeEvent","ResourceOrderInformationRequiredEvent"]
+TopicName = "esb.prd.resourceOrderEvents"
+ModuleName = "resourceOrder"
+MongoTable = "events"
+
+[[EventTopicMapping]]
+EventNames = ["ResourceOrderItemStateChangeEvent"]
+TopicName = "esb.prd.resourceOrderEvents"
+ModuleName = "resourceOrderItem"
+MongoTable = "events"
+
+[[EventTopicMapping]]
+EventNames = ["CancelResourceOrderCreateEvent","CancelResourceOrderStateChangeEvent","CancelResourceOrderInformationRequiredEvent"]
+TopicName = "esb.prd.cancelResourceOrderEvents"
+ModuleName = "cancelResourceOrder"
+MongoTable = "events"
+
+[[EventTopicMapping]]
+EventNames = ["UsageCreateEvent","UsageStateChangeEvent","UsageDeleteEvent","UsageAttributeValueChangeEvent"]
+TopicName = "esb.prd.usageEvents"
+ModuleName = "usage"
+MongoTable = "events"
+
+[[EventTopicMapping]]
+EventNames = ["UsageSpecificationCreateEvent","UsageSpecificationAttributeValueChangeEvent","UsageSpecificationDeleteEvent"]
+TopicName = "esb.prd.usageSpecificationEvents"
+ModuleName = "usageSpecification"
+MongoTable = "events"
+
+[[EventTopicMapping]]
+EventNames = ["CapacitySpecificationCreateEvent","CapacitySpecificationChangeEvent","CapacitySpecificationAttributeValueChangeEvent"]
+TopicName = "esb.prd.capacitySpecificationEvents"
+ModuleName = "capacitySpecification"
+MongoTable = "events"
+
+[[EventTopicMapping]]
+EventNames = ["ResourcePoolSpecificationCreateEvent","ResourcePoolSpecificationChangeEvent","ResourcePoolSpecificationDeleteEvent","ResourcePoolSpecificationAttributeValueChangeEvent"]
+TopicName = "esb.prd.resourcePoolSpecEvents"
+ModuleName = "resourcePoolSpecification"
+MongoTable = "events"
+
+[[EventTopicMapping]]
+EventNames = ['ResourcePoolCreateEvent','ResourcePoolChangeEvent','ResourcePoolStateChangeEvent','ResourcePoolDeleteEvent','ResourcePoolAttributeValueChangeEvent']
+TopicName = "esb.prd.resourcePoolEvents"
+ModuleName = "resourcePool"
+MongoTable = "events"
+
+[[EventTopicMapping]]
+EventNames = ['ServiceActivationCreateEvent']
+TopicName = "esb.prd.serviceActivationEvents"
+ModuleName = "serviceActivation"
+MongoTable = "events"
+
+
+
+[[EventTopicMapping]]
+EventNames = ['AvailabilityCheckCreateEvent','AvailabilityCheckStateChangeEvent','AvailabilityDeleteEvent']
+TopicName = "esb.prd.availabilityCheckEvents"
+ModuleName = "availabilityCheck"
+MongoTable = "events"
+
+[[EventTopicMapping]]
+EventNames = ['ExtractCreateEvent','ExtractStateChangeEvent','ExtractDeleteEvent']
+TopicName = "esb.prd.resourcePoolExtractEvents"
+ModuleName = "extract"
+MongoTable = "events"
+
+
+[[EventTopicMapping]]
+EventNames = ['PushCreateEvent','PushStateChangeEvent','PushDeleteEvent']
+TopicName = "esb.prd.resourcePoolPushEvents"
+ModuleName = "push"
+MongoTable = "events"
+
+[[EventTopicMapping]]
+EventNames = ['ResourceReservationCreateEvent','ResourceReservationStateChangeEvent','ResourceReservationDeleteEvent','ResourceReservationAttributeValueChangeEvent','ResourceReservationInformationRequiredEvent']
+TopicName = "esb.prd.resourceReservationEvents"
+ModuleName = "resourceReservation"
+MongoTable = "events"
+
+[[EventTopicMapping]]
+EventNames = ['CancelResourceReservationCreateEvent','CancelResourceReservationStateChangeEvent','CancelResourceReservationInformationRequiredEvent']
+TopicName = "esb.prd.cancelResourceReservationEvents"
+ModuleName = "cancelResourceReservation"
+MongoTable = "events"
+
+[[EventTopicMapping]]
+EventNames = ['CheckServiceQualificationCreateEvent','CheckServiceQualificationDeleteEvent','CheckServiceQualificationAttributeValueChangeEvent','CheckServiceQualificationInformationRequiredEvent','CheckServiceQualificationStateChangeEvent']
+TopicName = "esb.prd.checkServiceQualificationEvents"
+ModuleName = "checkServiceQualification"
+MongoTable = "events"
+
+[[EventTopicMapping]]
+    EventNames = ['QueryServiceQualificationCreateEvent','QueryServiceQualificationDeleteEvent','QueryServiceQualificationStateChangeEvent']
+    TopicName = "esb.prd.queryServiceQualificationEvents"
+    ModuleName = "queryServiceQualification"
+    MongoTable = "events"
+
+[Jaeger]
+    HttpHostListen = "http://10.137.17.37"
+    HttpPortListen = "30681/api/traces"
+
+[Prometheus]
+    EnablePrometheus = true
+    HttpPort = 8090
+
+[Logger]
+    LogDir = './z_other/logs'
+    LogFileName = 'nsb_service_inventory'
+    MaxSizeMB = 100
+    MaxBackups = 10
+    MaxAgeDays = 10
+    Compress = true
+    ToConsole = true
+    MaskingRegexPatterns = ['(?:(?:\+|)66|0)\d{9}','(?:(?:\+|)66|0)\d{8}','(?:\+66|66|0)?[689]\d{8}']

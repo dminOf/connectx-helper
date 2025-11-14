@@ -1,0 +1,102 @@
+[App]
+    HttpHostListen = "0.0.0.0"
+    HttpPortListen = 16641
+    LogDirectory = '/app/logs'
+    LogFilePrefix = "connx_helper_"
+    ExtraKafkaBackgroundListerTopics = []
+    Constraints = []
+    CommonConfig = "C:/code/go_code/src/github.com/corp-ais/connectx-helper/config/test_tmf_common_config.toml"
+    AppName = "serviceActivation"
+    Instance = ""
+    TransactionsDurationTime = 1800000
+
+[Logger]
+    LogDir = 'C:/code/go_code/src/github.com/corp-ais/connectx-helper/logs/'
+    LogFileName = "connx_helper_"
+    MaxSizeMB  = 10
+    MaxBackups = 10
+    MaxAgeDays = 10
+    Compress = true
+    ToConsole = true
+    MaskingRegexPatterns = []
+
+[Prometheus]
+    EnablePrometheus = true
+    HttpPort = 8090
+
+[mongodb]
+    hosts = ["10.138.33.193:25000", "10.138.33.206:25000", "10.138.33.198:25000"]
+    database = "service"
+    username = "tmfService"
+    password = "tmfServicePassword"
+    replicaSet = "replSetdev"
+
+[Kafka]
+    EnableKafka = true
+    Brokers = ["DMYAISKAFKA-0001:9093", "DMYAISKAFKA-0002:9093", "DMYAISKAFKA-0003:9093"]
+    ListenTopicsList = []
+    EnableTLS = true
+    EnableSASL = true
+    CACert = 'C:/code/go_code/src/github.com/corp-ais/connectx-helper/config/certs/ca-cert'
+    ClientSignedCert = 'C:/code/go_code/src/github.com/corp-ais/connectx-helper/config/certs/client-cert.pem'
+    ClientPrivateKey = 'C:/code/go_code/src/github.com/corp-ais/connectx-helper/config/certs/client-key.pem'
+    SASLUser = 'admin'
+    SASLPassword = "Aisadmin_secret"
+    AutomaticallyCreateTopics = true
+    DefaultNumberOfPartitions = 5
+    ConsumerGroup = 'connectx-helper'
+    EnableDynamicConsumerName = true
+
+[[TargetSystemReference]]
+    TargetSystem = "tmf640"
+    ModuleName = "cpass_module"
+    InterfaceType = "kafka"
+    KafkaTopicRequest = "nsb.createServiceActivation"
+    KafkaTopicResponse = "nsb.serviceActivationCreated"
+    HTTPURL = ""
+    Action = "add"
+
+[[TargetSystemReference]]
+    TargetSystem = "tmf640"
+    ModuleName = "cpass_module"
+    InterfaceType = "kafka"
+    KafkaTopicRequest = "nsb.updateServiceActivation"
+    KafkaTopicResponse = "nsb.serviceActivationUpdated"
+    HTTPURL = ""
+    Action = "modify"
+
+[[TargetSystemReference]]
+    TargetSystem = "tmf640"
+    ModuleName = "cpass_module"
+    InterfaceType = "kafka"
+    KafkaTopicRequest = "nsb.deleteServiceActivation"
+    KafkaTopicResponse = "nsb.serviceActivationDeleted"
+    HTTPURL = ""
+    Action = "delete"
+
+[[TargetSystemReference]]
+    TargetSystem = "tmf640"
+    ModuleName = "pbx_module"
+    InterfaceType = "kafka"
+    KafkaTopicRequest = "nsb.createServiceActivation"
+    KafkaTopicResponse = "nsb.serviceActivationCreated"
+    HTTPURL = ""
+    Action = "add"
+
+[[TargetSystemReference]]
+    TargetSystem = "tmf640"
+    ModuleName = "pbx_module"
+    InterfaceType = "kafka"
+    KafkaTopicRequest = "nsb.updateServiceActivation"
+    KafkaTopicResponse = "nsb.serviceActivationUpdated"
+    HTTPURL = ""
+    Action = "modify"
+
+[[TargetSystemReference]]
+    TargetSystem = "tmf640"
+    ModuleName = "pbx_module"
+    InterfaceType = "kafka"
+    KafkaTopicRequest = "nsb.deleteServiceActivation"
+    KafkaTopicResponse = "nsb.serviceActivationDeleted"
+    HTTPURL = ""
+    Action = "delete"
