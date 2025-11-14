@@ -123,15 +123,42 @@ export function generateOrderJSON(template: OrderTemplate, fieldValues: Record<s
   if (template.action === 'modify' && template.isTermination) {
     service.id = fieldValues.inventoryId || '';
     service.state = fieldValues.state || 'terminated';
+    service.serviceCharacteristic = [];
     service['@type'] = 'Service';
 
-    // Terminations don't typically have characteristics, just state change
+    // Always add externalId as a characteristic
+    service.serviceCharacteristic.push({
+      name: 'externalId',
+      value: externalId,
+      '@type': 'StringCharacteristic'
+    });
+
+    // Add any additional characteristics for termination (like remark)
+    template.fields.forEach(field => {
+      if (!field.topLevel && field.name !== 'externalId' && field.name !== 'description') {
+        let value = fieldValues[field.name] || field.example;
+        if (value !== undefined && value !== '') {
+          service.serviceCharacteristic.push({
+            name: field.name,
+            value: value,
+            '@type': getCharacteristicType(field.type)
+          });
+        }
+      }
+    });
   }
   // For modify actions (upgrade/downgrade/autoburst)
   else if (template.action === 'modify') {
     service.id = fieldValues.inventoryId || '';
     service.serviceCharacteristic = [];
     service['@type'] = 'Service';
+
+    // Always add externalId as a characteristic
+    service.serviceCharacteristic.push({
+      name: 'externalId',
+      value: externalId,
+      '@type': 'StringCharacteristic'
+    });
 
     // Build characteristics for the fields being modified
     template.fields.forEach(field => {
@@ -145,6 +172,10 @@ export function generateOrderJSON(template: OrderTemplate, fieldValues: Record<s
             } catch (e) {
               // If parsing fails, keep as string
             }
+          }
+          // Convert boolean strings to actual booleans
+          else if (field.type.toLowerCase() === 'boolean') {
+            value = value === 'true' || value === true;
           }
           service.serviceCharacteristic.push({
             name: field.name,
@@ -162,6 +193,13 @@ export function generateOrderJSON(template: OrderTemplate, fieldValues: Record<s
     service.state = 'reserved';
     service.serviceCharacteristic = [];
 
+    // Always add externalId as a characteristic
+    service.serviceCharacteristic.push({
+      name: 'externalId',
+      value: externalId,
+      '@type': 'StringCharacteristic'
+    });
+
     // Build characteristics from fields
     template.fields.forEach(field => {
       if (field.topLevel) {
@@ -171,8 +209,20 @@ export function generateOrderJSON(template: OrderTemplate, fieldValues: Record<s
         }
       } else if (field.name !== 'externalId' && field.name !== 'description') {
         // Regular characteristics
-        const value = fieldValues[field.name] || field.example;
+        let value = fieldValues[field.name] || field.example;
         if (value !== undefined && value !== '') {
+          // Parse StringArray values if they're JSON strings
+          if (field.type.toLowerCase() === 'stringarray' || field.type.toLowerCase() === 'array') {
+            try {
+              value = typeof value === 'string' ? JSON.parse(value) : value;
+            } catch (e) {
+              // If parsing fails, keep as string
+            }
+          }
+          // Convert boolean strings to actual booleans
+          else if (field.type.toLowerCase() === 'boolean') {
+            value = value === 'true' || value === true;
+          }
           service.serviceCharacteristic.push({
             name: field.name,
             value: value,
@@ -229,7 +279,7 @@ export const ORDER_TEMPLATES: Record<string, OrderTemplate> = {
       { name: 'customerSiteCode', mandatory: true, type: 'string', example: 'CX_123456', description: 'Customer site code' },
       { name: 'dcLocation', mandatory: true, type: 'string', example: 'STTT3', description: 'Data Center Location' },
       { name: 'portType', mandatory: true, type: 'string', example: '1G', description: 'Port type: 1G, 10G, 100G' },
-      { name: 'isDiversity', mandatory: false, type: 'boolean', example: 'false', description: 'Port diversity' },
+      { name: 'isDiversity', mandatory: false, type: 'boolean', example: false, description: 'Port diversity' },
       { name: 'diversityNonmobile', mandatory: false, type: 'string', example: '', description: 'Diversity nonmobile (required if isDiversity = true)' },
       { name: 'serviceVlanType', mandatory: false, type: 'string', example: 'dot1q', description: 'Service VLAN type: dot1q, access, qinq' },
       { name: 'networkServiceType', mandatory: true, type: 'string', example: 'L2VPN', description: 'Network service type: L2VPN, L3VPN, L3VPN-INTERNET' },

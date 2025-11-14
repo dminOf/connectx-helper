@@ -219,7 +219,7 @@ export function OrdersPage() {
                   <select
                     id={field.name}
                     className="form-input-small"
-                    value={fieldValues[field.name] || 'false'}
+                    value={String(fieldValues[field.name] ?? false)}
                     onChange={(e) => handleFieldChange(field.name, e.target.value === 'true')}
                   >
                     <option value="false">false</option>

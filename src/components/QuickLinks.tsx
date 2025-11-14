@@ -1,18 +1,43 @@
 import { useState } from 'react';
+import { FiSend, FiCheckCircle, FiActivity, FiPower, FiCheck, FiSearch } from 'react-icons/fi';
 
 export function QuickLinks() {
   const [isExpanded, setIsExpanded] = useState(true);
 
   const orderLinks = [
-    { label: 'Create Service Order', url: '/order/create' },
-    { label: 'Service Order Created', url: '/order/created' },
-    { label: 'Service Order Events', url: '/order/events' },
+    {
+      label: 'Create Service Order',
+      url: 'http://10.138.33.188:8080/ui/clusters/dev/all-topics/esb.prd.createServiceOrder/messages?filterQueryType=STRING_CONTAINS&attempt=2&limit=100&page=0&seekDirection=BACKWARD&keySerde=String&valueSerde=String&seekType=LATEST',
+      icon: <FiSend />
+    },
+    {
+      label: 'Service Order Created',
+      url: 'http://10.138.33.188:8080/ui/clusters/dev/all-topics/esb.prd.serviceOrderCreated/messages?filterQueryType=STRING_CONTAINS&attempt=2&limit=100&page=0&seekDirection=BACKWARD&keySerde=String&valueSerde=String&seekType=LATEST',
+      icon: <FiCheckCircle />
+    },
+    {
+      label: 'Service Order Events',
+      url: 'http://10.138.33.188:8080/ui/clusters/dev/all-topics/esb.prd.serviceOrderEvents/messages?filterQueryType=STRING_CONTAINS&attempt=2&limit=100&page=0&seekDirection=BACKWARD&keySerde=String&valueSerde=String&seekType=LATEST',
+      icon: <FiActivity />
+    },
   ];
 
   const activationLinks = [
-    { label: 'Create Service Activation', url: '/activation/create' },
-    { label: 'Service Activation Created', url: '/activation/created' },
-    { label: 'Service Activation Events', url: '/activation/events' },
+    {
+      label: 'Create Service Activation',
+      url: 'http://10.138.33.188:8080/ui/clusters/dev/all-topics/esb.prd.createServiceActivation/messages?filterQueryType=STRING_CONTAINS&attempt=2&limit=100&page=0&seekDirection=BACKWARD&keySerde=String&valueSerde=String&seekType=LATEST',
+      icon: <FiPower />
+    },
+    {
+      label: 'Service Activation Created',
+      url: 'http://10.138.33.188:8080/ui/clusters/dev/all-topics/esb.prd.serviceActivationCreated/messages?filterQueryType=STRING_CONTAINS&attempt=2&limit=100&page=0&seekDirection=BACKWARD&keySerde=String&valueSerde=String&seekType=LATEST',
+      icon: <FiCheck />
+    },
+    {
+      label: 'Service Activation Events',
+      url: 'http://10.138.33.188:8080/ui/clusters/dev/all-topics/esb.prd.serviceActivationEvents/messages?filterQueryType=STRING_CONTAINS&attempt=2&limit=100&page=0&seekDirection=BACKWARD&keySerde=String&valueSerde=String&seekType=LATEST',
+      icon: <FiActivity />
+    },
   ];
 
   return (
@@ -30,7 +55,10 @@ export function QuickLinks() {
             <ul>
               {orderLinks.map((link, index) => (
                 <li key={index}>
-                  <a href={link.url}>{link.label}</a>
+                  <a href={link.url} target="_blank" rel="noopener noreferrer">
+                    <span className="link-icon">{link.icon}</span>
+                    {link.label}
+                  </a>
                 </li>
               ))}
             </ul>
@@ -42,7 +70,10 @@ export function QuickLinks() {
             <ul>
               {activationLinks.map((link, index) => (
                 <li key={index}>
-                  <a href={link.url}>{link.label}</a>
+                  <a href={link.url} target="_blank" rel="noopener noreferrer">
+                    <span className="link-icon">{link.icon}</span>
+                    {link.label}
+                  </a>
                 </li>
               ))}
             </ul>
@@ -50,8 +81,9 @@ export function QuickLinks() {
 
           {/* Jaeger Link */}
           <div className="link-section jaeger-link">
-            <a href="https://jaeger.example.com" target="_blank" rel="noopener noreferrer">
-              🔍 Jaeger
+            <a href="http://10.137.17.37:30686/search?end=1762316157758000&limit=20&lookback=1h&maxDuration&minDuration&service=TMF641_ServiceOrder&start=1762312557758000" target="_blank" rel="noopener noreferrer">
+              <span className="link-icon"><FiSearch /></span>
+              Jaeger
             </a>
           </div>
         </div>
