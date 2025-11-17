@@ -35,6 +35,9 @@ export function OrdersPage() {
   const [currentTemplate, setCurrentTemplate] = useState<OrderTemplate | null>(null);
   const [generatedJSON, setGeneratedJSON] = useState<string>('');
   const [showCopyNotification, setShowCopyNotification] = useState(false);
+  const [showSendNotification, setShowSendNotification] = useState(false);
+  const [sendStatus, setSendStatus] = useState<'success' | 'error' | null>(null);
+  const [isSending, setIsSending] = useState(false);
 
   // Get active sub-tab based on selected main tab
   const getActiveSubTab = (): string => {
@@ -98,6 +101,48 @@ export function OrdersPage() {
     navigator.clipboard.writeText(generatedJSON);
     setShowCopyNotification(true);
     setTimeout(() => setShowCopyNotification(false), 2000);
+  };
+
+  const handleSendOrder = async () => {
+    if (!generatedJSON || isSending) return;
+
+    setIsSending(true);
+    setSendStatus(null);
+    setShowSendNotification(false);
+
+    try {
+      const orderData = JSON.parse(generatedJSON);
+      const response = await fetch('/api/orders/send', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          topic: 'esb.prd.createServiceOrder',
+          message: orderData
+        }),
+      });
+
+      const result = await response.json();
+
+      if (response.ok && result.success) {
+        setSendStatus('success');
+        setShowSendNotification(true);
+        setTimeout(() => setShowSendNotification(false), 3000);
+      } else {
+        setSendStatus('error');
+        setShowSendNotification(true);
+        console.error('Failed to send order:', result);
+        setTimeout(() => setShowSendNotification(false), 5000);
+      }
+    } catch (error) {
+      setSendStatus('error');
+      setShowSendNotification(true);
+      console.error('Error sending order:', error);
+      setTimeout(() => setShowSendNotification(false), 5000);
+    } finally {
+      setIsSending(false);
+    }
   };
 
   return (
@@ -255,12 +300,26 @@ export function OrdersPage() {
                 </button>
               ))}
             </div>
-            <button className="copy-json-button" onClick={handleCopyJSON}>
-              Copy
-            </button>
+            <div className="json-action-buttons">
+              <button
+                className="send-order-button"
+                onClick={handleSendOrder}
+                disabled={isSending || !generatedJSON}
+              >
+                {isSending ? 'Sending...' : 'Send Order'}
+              </button>
+              <button className="copy-json-button" onClick={handleCopyJSON}>
+                Copy
+              </button>
+            </div>
             {showCopyNotification && (
               <div className="copy-notification">
                 ✓ Copied to clipboard
+              </div>
+            )}
+            {showSendNotification && (
+              <div className={`send-notification ${sendStatus === 'success' ? 'success' : 'error'}`}>
+                {sendStatus === 'success' ? '✓ Order sent to Kafka' : '✗ Failed to send order'}
               </div>
             )}
           </div>

@@ -3,6 +3,7 @@ import index from "./index.html";
 import { loadConfig, getConfig } from "./components/config-loader";
 import { initLogger, logger } from "./components/logger";
 import { connectMongoDB, getDB } from "./components/mongodb";
+import { initKafka, sendMessage, isKafkaReady } from "./components/kafka";
 import { resolve } from "path";
 
 // Initialize application
@@ -20,6 +21,14 @@ async function initializeApp() {
     // Connect to MongoDB
     await connectMongoDB(config.mongodb);
     logger.info('MongoDB connected');
+
+    // Initialize Kafka
+    if (config.Kafka && config.Kafka.EnableKafka) {
+      await initKafka(config.Kafka);
+      logger.info('Kafka initialized');
+    } else {
+      logger.warn('Kafka is disabled or not configured');
+    }
 
     logger.info('Application initialized successfully');
   } catch (error) {
@@ -199,6 +208,53 @@ const server = serve({
           logger.error('Error deleting characteristic', error);
           return Response.json(
             { error: 'Internal server error' },
+            { status: 500 }
+          );
+        }
+      },
+    },
+
+    // API: Send order to Kafka
+    "/api/orders/send": {
+      async POST(req) {
+        try {
+          const body = await req.json();
+          const { topic, message } = body;
+
+          if (!topic || !message) {
+            return Response.json(
+              { error: 'topic and message are required' },
+              { status: 400 }
+            );
+          }
+
+          if (!isKafkaReady()) {
+            return Response.json(
+              { error: 'Kafka is not initialized or not ready' },
+              { status: 503 }
+            );
+          }
+
+          logger.info(`Sending order to Kafka topic: ${topic}`, {
+            externalId: message.body?.externalId || 'unknown'
+          });
+
+          await sendMessage(topic, message);
+
+          logger.info(`Order sent successfully to ${topic}`, {
+            externalId: message.body?.externalId || 'unknown'
+          });
+
+          return Response.json({
+            success: true,
+            topic,
+            externalId: message.body?.externalId || 'unknown',
+            timestamp: new Date().toISOString()
+          });
+        } catch (error) {
+          logger.error('Error sending order to Kafka', error);
+          return Response.json(
+            { error: 'Failed to send order to Kafka', details: String(error) },
             { status: 500 }
           );
         }
